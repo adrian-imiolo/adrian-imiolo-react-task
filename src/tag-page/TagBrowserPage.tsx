@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useFetch from "./useFetch";
+import TableElement from "./Table";
 import {
   Select,
   SelectContent,
@@ -19,16 +20,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 
 type Sort = "popular" | "activity" | "name";
 type PageSize = 10 | 20 | 30;
@@ -105,25 +96,7 @@ function TagBrowserPage() {
         value={order}
         options={["asc", "desc"]}
       />
-
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px]">Count</TableHead>
-            <TableHead>Tag</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data.map((tag, i) => {
-            return (
-              <TableRow key={i}>
-                <TableCell className="text-left">{tag.count}</TableCell>
-                <TableCell className="text-left">{tag.name}</TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+      <TableElement data={data} />
 
       <Pagination className="cursor-pointer">
         <PaginationContent>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-interface Tag {
+export interface Tag {
   has_synonyms: boolean;
   is_moderator_only: boolean;
   is_required: boolean;
