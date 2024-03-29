@@ -22,11 +22,13 @@ function useFetch(url: string) {
       try {
         const res = await axios.get(url);
         setData(res.data.items);
-        setLoading(false);
-      } catch (err) {
+      } catch (error: unknown) {
         setError(true);
-        console.error(err.message);
+        if (error instanceof Error) {
+          console.error(error.message);
+        }
       }
+      setLoading(false);
     }
     getData();
   }, [url]);

@@ -1,7 +1,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -14,21 +13,21 @@ interface TableProps {
   data: Tag[];
 }
 
-function TableElement({ data }: TableProps) {
+function TableEl({ data }: TableProps) {
   return (
-    <Table>
+    <Table className="w-[300px] ">
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Count</TableHead>
           <TableHead>Tag</TableHead>
+          <TableHead className="text-right">Count</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {data.map((tag, i) => {
           return (
             <TableRow key={i}>
-              <TableCell className="text-left">{tag.count}</TableCell>
               <TableCell className="text-left">{tag.name}</TableCell>
+              <TableCell className="text-right">{tag.count}</TableCell>
             </TableRow>
           );
         })}
@@ -36,4 +35,4 @@ function TableElement({ data }: TableProps) {
     </Table>
   );
 }
-export default TableElement;
+export default TableEl;
