@@ -1,37 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-
-export interface Tag {
-  has_synonyms: boolean;
-  is_moderator_only: boolean;
-  is_required: boolean;
-  count: number;
-  name: string;
-  collectives?: unknown;
-}
+import { Tag } from "@/types";
 
 function useFetch(url: string) {
   const [data, setData] = useState<Tag[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
-  useEffect(() => {
+  const getData = useCallback(async () => {
     setLoading(true);
-
-    async function getData() {
-      try {
-        const res = await axios.get(url);
-        setData(res.data.items);
-      } catch (error: unknown) {
-        setError(true);
-        if (error instanceof Error) {
-          console.error(error.message);
-        }
-      }
-      setLoading(false);
+    try {
+      const res = await axios.get(url);
+      setData(res.data.items);
+    } catch (error) {
+      setError(true);
+      console.error(error);
     }
-    getData();
+    setLoading(false);
   }, [url]);
+
+  useEffect(() => {
+    getData();
+  }, [url, getData]);
 
   return { data, loading, error };
 }

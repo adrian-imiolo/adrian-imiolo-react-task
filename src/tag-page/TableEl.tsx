@@ -7,15 +7,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { Tag } from "./useFetch";
-
-interface TableProps {
-  data: Tag[];
-}
+import { TableProps } from "@/types";
 
 function TableEl({ data }: TableProps) {
   return (
-    <Table className="w-[300px] ">
+    <Table className="w-[300px] my-5">
       <TableHeader>
         <TableRow>
           <TableHead>Tag</TableHead>
