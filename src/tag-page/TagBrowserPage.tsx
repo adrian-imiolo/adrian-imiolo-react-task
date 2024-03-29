@@ -4,7 +4,7 @@ import TableEl from "./TableEl";
 
 import { SelectGeneric } from "./SelectGeneric";
 import PaginationEl from "./PaginationEl";
-import { mockData as data } from "./mock";
+import { mockData as tags } from "./mock";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Sort, PageSize, Order } from "@/types";
 
@@ -23,6 +23,9 @@ function TagBrowserPage() {
   // const { loading, data, error } = useFetch(
   //   `${url}tags?page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&site=stackoverflow`
   // );
+  //
+  // const tags: Tag[] = data.items;
+  // const {items} = data;
 
   // if (loading) {
   //   return <div>Loading...</div>;
@@ -66,7 +69,7 @@ function TagBrowserPage() {
         />
         <ModeToggle />
       </div>
-      <TableEl data={data} />
+      <TableEl data={tags} />
       <PaginationEl page={page} setPage={setPage} />
     </div>
   );
