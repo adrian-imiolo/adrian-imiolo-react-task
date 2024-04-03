@@ -1,16 +1,14 @@
 import { useState } from "react";
 import useFetch from "./useFetch";
 import TableEl from "./TableEl";
-
-import { SelectGeneric } from "./SelectGeneric";
+import SelectGeneric from "./SelectGeneric";
 import PaginationEl from "./PaginationEl";
-// import { mockData as tags } from "./mock";
 import { ModeToggle } from "@/components/mode-toggle";
-import { Sort, PageSize, Order, Tag } from "@/types";
+import { Sort, PageSize, Order, Data } from "@/types";
+import OrderToggle from "./OrderToggle";
 
 const sortOptions: Sort[] = ["popular", "activity", "name"];
 const pageOptions: PageSize[] = ["10", "20", "30"];
-const orderOptions: Order[] = ["asc", "desc"];
 
 function TagBrowserPage() {
   const [sort, setSort] = useState<Sort>("popular");
@@ -18,16 +16,15 @@ function TagBrowserPage() {
   const [order, setOrder] = useState<Order>("desc");
   const [page, setPage] = useState(1);
 
-  // const url = import.meta.env.VITE_APP_URL;
+  const url = import.meta.env.VITE_APP_URL;
 
-  const { loading, data, error } = useFetch(
-    `https://api.stackexchange.com/2.3/tags?page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&site=stackoverflow`
+  const { loading, data, error } = useFetch<Data>(
+    `${url}tags?page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&site=stackoverflow`
   );
-  let tags: Tag[] = [];
 
-  if (data) {
-    tags = data.items;
-  }
+  if (!data) return null;
+
+  const { items: tags } = data;
 
   if (loading) {
     return <div>Loading...</div>;
@@ -35,7 +32,6 @@ function TagBrowserPage() {
   if (error) {
     return <div>Something went wrong.</div>;
   }
-  console.log(data);
 
   function changeSortDirection(value: Sort) {
     setSort(value);
@@ -43,8 +39,13 @@ function TagBrowserPage() {
   function changePageSize(value: PageSize) {
     setPageSize(value);
   }
-  function changeOrder(value: Order) {
-    setOrder(value);
+  function changeOrder() {
+    if (order === "desc") {
+      setOrder("asc");
+    }
+    if (order === "asc") {
+      setOrder("desc");
+    }
   }
 
   return (
@@ -55,16 +56,13 @@ function TagBrowserPage() {
           value={sort}
           options={sortOptions}
         />
+        <OrderToggle order={order} onClick={changeOrder} />
+
         <SelectGeneric
           className="w-16"
           onChange={changePageSize}
           value={pageSize}
           options={pageOptions}
-        />
-        <SelectGeneric
-          onChange={changeOrder}
-          value={order}
-          options={orderOptions}
         />
         <ModeToggle />
       </div>

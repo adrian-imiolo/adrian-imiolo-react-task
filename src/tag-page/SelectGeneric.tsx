@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { SelectOptions, SelectProps } from "@/types";
+import { SelectOptions } from "@/types";
 import {
   Select,
   SelectContent,
@@ -9,8 +9,14 @@ import {
 } from "@/components/ui/select";
 
 // todo understand what happens here(generics)
+interface SelectProps<T> {
+  value: T;
+  onChange: (value: T) => void;
+  options: T[];
+  className?: string;
+}
 
-export function SelectGeneric<T extends SelectOptions>({
+function SelectGeneric<T extends SelectOptions>({
   value,
   onChange,
   options,
@@ -31,3 +37,5 @@ export function SelectGeneric<T extends SelectOptions>({
     </Select>
   );
 }
+
+export default SelectGeneric;

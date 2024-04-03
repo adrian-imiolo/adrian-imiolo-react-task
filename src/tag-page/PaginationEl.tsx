@@ -7,7 +7,10 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-import { PaginationProps } from "@/types";
+interface PaginationProps {
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+}
 
 function PaginationEl({ page, setPage }: PaginationProps) {
   function nextPage() {

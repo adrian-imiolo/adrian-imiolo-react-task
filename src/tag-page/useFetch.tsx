@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { Data, FetchResult } from "@/types";
+import { FetchResult } from "@/types";
 
-function useFetch(url: string): FetchResult {
-  const [data, setData] = useState<Data>(undefined);
+function useFetch<T>(url: string): FetchResult<T> {
+  const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 

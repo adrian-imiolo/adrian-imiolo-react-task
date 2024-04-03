@@ -6,8 +6,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Tag } from "@/types";
 
-import { TableProps } from "@/types";
+export interface TableProps {
+  data: Tag[] | undefined;
+}
 
 function TableEl({ data }: TableProps) {
   return (
