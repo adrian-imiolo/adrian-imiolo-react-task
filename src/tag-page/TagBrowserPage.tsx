@@ -25,7 +25,6 @@ function TagBrowserPage() {
   if (!data) return null;
 
   const { items: tags } = data;
-  console.log(data);
   function changeSortDirection(value: Sort) {
     setSort(value);
   }
