@@ -1,7 +1,8 @@
+import { Order } from "@/types";
 import { ArrowDown, ArrowUp } from "lucide-react";
 
 export interface OrderToggleProps {
-  order: string;
+  order: Order;
   onClick: () => void;
 }
 
