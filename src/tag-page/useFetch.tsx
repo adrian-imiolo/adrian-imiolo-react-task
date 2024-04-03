@@ -1,21 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { Tag } from "@/types";
-
-type Data =
-  | {
-      items: Tag[];
-      has_more: boolean;
-      quota_max: number;
-      quota_remaining: number;
-    }
-  | undefined;
-
-interface FetchResult {
-  data: Data;
-  loading: boolean;
-  error: boolean;
-}
+import { Data, FetchResult } from "@/types";
 
 function useFetch(url: string): FetchResult {
   const [data, setData] = useState<Data>(undefined);
@@ -25,7 +10,7 @@ function useFetch(url: string): FetchResult {
   const getData = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await axios.get(url); // specifying the expected response data type
+      const res = await axios.get(url);
       setData(res.data);
     } catch (error) {
       setError(true);

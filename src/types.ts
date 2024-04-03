@@ -13,7 +13,7 @@ export interface Tag {
   }
 
   export interface TableProps {
-    data: Tag[];
+    data: Tag[] | undefined;
   }
 
   export interface PaginationProps {
@@ -27,3 +27,18 @@ export interface Tag {
     options: T[];
     className?: string;
   }
+
+  export type Data =
+   {
+      items: Tag[];
+      has_more: boolean;
+      quota_max: number;
+      quota_remaining: number;
+    }
+  | undefined;
+
+export interface FetchResult {
+  data: Data;
+  loading: boolean;
+  error: boolean;
+}

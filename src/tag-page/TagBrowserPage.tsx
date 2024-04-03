@@ -1,12 +1,12 @@
 import { useState } from "react";
-// import useFetch from "./useFetch";
+import useFetch from "./useFetch";
 import TableEl from "./TableEl";
 
 import { SelectGeneric } from "./SelectGeneric";
 import PaginationEl from "./PaginationEl";
-import { mockData as tags } from "./mock";
+// import { mockData as tags } from "./mock";
 import { ModeToggle } from "@/components/mode-toggle";
-import { Sort, PageSize, Order } from "@/types";
+import { Sort, PageSize, Order, Tag } from "@/types";
 
 const sortOptions: Sort[] = ["popular", "activity", "name"];
 const pageOptions: PageSize[] = ["10", "20", "30"];
@@ -18,34 +18,33 @@ function TagBrowserPage() {
   const [order, setOrder] = useState<Order>("desc");
   const [page, setPage] = useState(1);
 
-  // const url = process.env.REACT_APP_URL;
+  // const url = import.meta.env.VITE_APP_URL;
 
-  // const { loading, data, error } = useFetch(
-  //   `${url}tags?page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&site=stackoverflow`
-  // );
-  //
-  // const tags: Tag[] = data.items;
-  // const {items} = data;
+  const { loading, data, error } = useFetch(
+    `https://api.stackexchange.com/2.3/tags?page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&site=stackoverflow`
+  );
+  let tags: Tag[] = [];
 
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-  // if (error) {
-  //   return <div>Something went wrong.</div>;
-  // }
-  // console.log(data);
+  if (data) {
+    tags = data.items;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Something went wrong.</div>;
+  }
+  console.log(data);
 
   function changeSortDirection(value: Sort) {
     setSort(value);
-    console.log(sort);
   }
   function changePageSize(value: PageSize) {
     setPageSize(value);
-    console.log(pageSize);
   }
   function changeOrder(value: Order) {
     setOrder(value);
-    console.log(order);
   }
 
   return (

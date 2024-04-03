@@ -19,7 +19,7 @@ function TableEl({ data }: TableProps) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((tag, i) => {
+        {data?.map((tag, i) => {
           return (
             <TableRow key={i}>
               <TableCell className="text-left">{tag.name}</TableCell>
