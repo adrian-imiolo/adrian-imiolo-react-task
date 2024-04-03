@@ -39,7 +39,7 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  args: { data: mockData },
+  args: { data: mockData, loading: false },
 } satisfies Meta<typeof TableEl>;
 
 export default meta;
@@ -47,5 +47,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Table: Story = {
-  args: { data: mockData },
+  args: { data: mockData, loading: false },
 };

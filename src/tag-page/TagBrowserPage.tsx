@@ -25,14 +25,7 @@ function TagBrowserPage() {
   if (!data) return null;
 
   const { items: tags } = data;
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>Something went wrong.</div>;
-  }
-
+  console.log(data);
   function changeSortDirection(value: Sort) {
     setSort(value);
   }
@@ -46,6 +39,10 @@ function TagBrowserPage() {
     if (order === "asc") {
       setOrder("desc");
     }
+  }
+
+  if (error) {
+    return <div>Something went wrong.</div>;
   }
 
   return (
@@ -66,7 +63,7 @@ function TagBrowserPage() {
         />
         <ModeToggle />
       </div>
-      <TableEl data={tags} />
+      <TableEl data={tags} loading={loading} />
       <PaginationEl page={page} setPage={setPage} />
     </div>
   );

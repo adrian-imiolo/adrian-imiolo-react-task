@@ -7,12 +7,17 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tag } from "@/types";
+import PageSkeleton from "./PageSkeleton";
 
 export interface TableProps {
   data: Tag[] | undefined;
+  loading: boolean;
 }
 
-function TableEl({ data }: TableProps) {
+function TableEl({ data, loading }: TableProps) {
+  if (loading) {
+    return <PageSkeleton />;
+  }
   return (
     <Table className="w-[300px] my-5">
       <TableHeader>
