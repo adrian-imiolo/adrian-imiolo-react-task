@@ -1,4 +1,4 @@
-# Mediporta React Task
+# React Task
 
 This project is a modern web application built with React, TypeScript, and Vite. It showcases the use of various libraries and tools to create a fast, efficient, and user-friendly application.
 
