@@ -1,8 +1,8 @@
 import { useState } from "react";
 import useFetch from "./useFetch";
-import TableEl from "./TableEl";
+import TabBrowserTable from "./TabBrowserTable";
 import SelectGeneric from "./SelectGeneric";
-import PaginationEl from "./PaginationEl";
+import TagBrowserPagination from "./TagBrowserPagination";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Sort, PageSize, Order, Data } from "@/types";
 import OrderToggle from "./OrderToggle";
@@ -62,8 +62,8 @@ function TagBrowserPage() {
         />
         <ModeToggle />
       </div>
-      <TableEl data={tags} loading={loading} />
-      <PaginationEl page={page} setPage={setPage} />
+      <TabBrowserTable data={tags} loading={loading} />
+      <TagBrowserPagination page={page} setPage={setPage} />
     </div>
   );
 }

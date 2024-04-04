@@ -14,7 +14,7 @@ export interface TableProps {
   loading: boolean;
 }
 
-function TableEl({ data, loading }: TableProps) {
+function TabBrowserTable({ data, loading }: TableProps) {
   if (loading) {
     return <PageSkeleton />;
   }
@@ -39,4 +39,4 @@ function TableEl({ data, loading }: TableProps) {
     </Table>
   );
 }
-export default TableEl;
+export default TabBrowserTable;

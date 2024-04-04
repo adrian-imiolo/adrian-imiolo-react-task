@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import TableEl from "@/tag-page/TableEl";
+import TableEl from "@/tag-page/TabBrowserTable";
 
 const mockData = [
   {

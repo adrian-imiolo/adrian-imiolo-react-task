@@ -12,7 +12,7 @@ interface PaginationProps {
   setPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function PaginationEl({ page, setPage }: PaginationProps) {
+function TagBrowserPagination({ page, setPage }: PaginationProps) {
   function nextPage() {
     setPage((p) => p + 1);
   }
@@ -52,4 +52,4 @@ function PaginationEl({ page, setPage }: PaginationProps) {
     </Pagination>
   );
 }
-export default PaginationEl;
+export default TagBrowserPagination;
