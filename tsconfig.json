@@ -13,7 +13,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "types": ["vitest/globals"],
+    "types": ["vitest/globals","node", "jest", "@testing-library/jest-dom"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -29,6 +29,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/tests/OrderToggle.test.tsx"],
+  "include": ["src", "src/tests/OrderToggle.test.tsx", "@types/jest"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

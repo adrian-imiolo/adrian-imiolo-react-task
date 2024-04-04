@@ -10,9 +10,9 @@ function OrderToggle({ order, onClick }: OrderToggleProps) {
   return (
     <div className="flex items-center cursor-pointer">
       {order === "desc" ? (
-        <ArrowDown onClick={onClick} />
+        <ArrowDown data-testid="arrow-down" onClick={onClick} />
       ) : (
-        <ArrowUp onClick={onClick} />
+        <ArrowUp data-testid="arrow-up" onClick={onClick} />
       )}
     </div>
   );
