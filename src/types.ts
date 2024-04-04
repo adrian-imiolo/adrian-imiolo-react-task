@@ -1,7 +1,7 @@
 export type Sort = "popular" | "activity" | "name";
 export type PageSize = "10" | "20" | "30";
 export type Order = "desc" | "asc";
-export type SelectOptions = Sort | PageSize | Order;
+export type SelectOptions = Sort | PageSize;
 
 export interface Tag {
   has_synonyms: boolean;

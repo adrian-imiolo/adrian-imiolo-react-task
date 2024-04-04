@@ -8,7 +8,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// todo understand what happens here(generics)
 interface SelectProps<T> {
   value: T;
   onChange: (value: T) => void;
