@@ -6,4 +6,9 @@ export default defineConfig({
     globals: true,
     setupFiles: "tests/setup.ts",
   },
+  resolve: {
+    alias: {
+      "@": "./src",
+    },
+  },
 });

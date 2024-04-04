@@ -29,6 +29,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "src/tests/OrderToggle.test.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
