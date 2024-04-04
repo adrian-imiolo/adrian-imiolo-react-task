@@ -8,7 +8,7 @@ export interface OrderToggleProps {
 
 function OrderToggle({ order, onClick }: OrderToggleProps) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center cursor-pointer">
       {order === "desc" ? (
         <ArrowDown onClick={onClick} />
       ) : (
