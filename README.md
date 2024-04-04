@@ -21,6 +21,10 @@ This project is a modern web application built with React, TypeScript, and Vite.
 - **OrderToggle Component**: The `OrderToggle` component in [`src/tag-page/OrderToggle.tsx`](src/tag-page/OrderToggle.tsx) is a simple, reusable component that can be used to toggle the order of items.
 - **Vite Configuration**: The [`vite.config.ts`](vite.config.ts) file contains the configuration for Vite, demonstrating how to customize the build process.
 
+## Demo
+
+To checkout demo click here: https://adrian-imiolo-react-task.netlify.app/. Deployed by Netlify.
+
 ## Getting Started
 
 To get started with this project, clone the repository and install the dependencies using `npm install`. Then, you can start the development server using `npm run dev`.
